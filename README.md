@@ -43,6 +43,9 @@ The objective of SVM algorithm is to find a hyperplane in an N-dimensional space
 
 ![Logo](https://static.javatpoint.com/tutorial/machine-learning/images/support-vector-machine-algorithm.png)
 
+## App link
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/shivampandeyvns/rubix22-69-teamvision/main/app.py)
+
 ## Video Demonstration
 
 https://user-images.githubusercontent.com/77262548/150108802-727ce95e-0f8f-40bb-a0d7-846cb2ad91ec.mp4
