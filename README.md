@@ -52,5 +52,5 @@ https://user-images.githubusercontent.com/77262548/150108802-727ce95e-0f8f-40bb-
 
 - [@Mayank Sinha](https://github.com/willywonka32)
 - [@Amit Prakash](https://github.com/amitpr07)
-- [@Shivam Pandey](https://www.github.com/octokatherine)
+- [@Shivam Pandey](https://github.com/shivampandeyvns)
 - [@Vibhav Bhriguvanshi](https://github.com/vibhav0710)
