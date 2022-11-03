@@ -83,7 +83,7 @@ if(lang=='English'):
         
         chart_data=pd.DataFrame([svm_end_time-svm_start_time,LR_end_time-LR_start_time,rf_end_time-rf_start_time,tree_end_time-tree_start_time,KNN_end_time-KNN_start_time],
                                 columns=['SVM','LR','Random Forest','Decision Tree','KNN'])
-        st.line_chart(chart_data)
+        st.bar_chart(chart_data)
 
 if(lang=='Hindi'):
     hindi_model=pickle.load(open('hindi_model.pkl','rb'))
