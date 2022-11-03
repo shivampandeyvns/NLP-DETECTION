@@ -29,7 +29,15 @@ if(lang=='English'):
     st.write('Please write your text below')
     input_english=st.text_input('')
     if(input!=''):
+        
+        svm_time=0
+        LR_time=0
+        rf_time=0
+        tree_time=0
+        KNN_time=0
+        
         text_en=vectorizer.transform([input_english])
+        
         svm_start_time=time.time()
         prediction_SVM=model_SVM.predict(text_en)
         svm_end_time=time.time()
@@ -45,6 +53,12 @@ if(lang=='English'):
         KNN_start_time=time.time()
         prediction_KNN=model_KNN.predict(text_en)
         KNN_end_time=time.time()
+        
+        svm_time=svm_end_time-svm_start_time
+        LR_time=LR_end_time-LR_start_time+0.01
+        rf_time=rf_end_time-rf_start_time
+        tree_time=tree_end_time-tree_start_time+0.02
+        KNN_time=KNN_end_time-KNN_start_time
         
         if(prediction_SVM==1):
             st.write('SVM predicts : Undesired Speech Detected')
@@ -82,11 +96,6 @@ if(lang=='English'):
             st.write('KNN predicts: No Undesirable Text Found')
             st.write('Time for prediction is:' + str(KNN_end_time-KNN_start_time))
         
-        svm_time=svm_end_time-svm_start_time
-        LR_time=LR_end_time-LR_start_time+0.01
-        rf_time=rf_end_time-rf_start_time
-        tree_time=tree_end_time-tree_start_time+0.02
-        KNN_time=KNN_end_time-KNN_start_time
 
         data={'SVM':svm_time ,'LR':LR_time,'Random Forest':rf_time,'Decision Tree':tree_time,'KNN':KNN_time}
         chart_data=pd.DataFrame.from_dict(data, orient='index', columns=['A'])
