@@ -40,7 +40,7 @@ if(lang=='English'):
         rf_end_time=time.time()
         tree_start_time=time.time()
         prediction_tree=model_tree.predict(text_en)
-        tree_start_time=time.time()
+        tree_end_time=time.time()
         KNN_start_time=time.time()
         prediction_KNN=model_KNN.predict(text_en)
         KNN_end_time=time.time()
