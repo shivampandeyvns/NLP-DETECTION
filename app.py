@@ -29,17 +29,8 @@ if(lang=='English'):
     st.write('Please write your text below')
     input_english=st.text_input('')
     if(input!=''):
-        
-        svm_time=0
-        LR_time=0
-        rf_time=0
-        tree_time=0
-        KNN_time=0
-        
-        text_en=vectorizer.transform([input_english])
-        
         if st.button('RUN'):
-            
+            text_en=vectorizer.transform([input_english])
             svm_start_time=time.time()
             prediction_SVM=model_SVM.predict(text_en)
             svm_end_time=time.time()
@@ -104,37 +95,37 @@ if(lang=='English'):
             st.write(chart_data)
             st.bar_chart(chart_data)
 
-if(lang=='Hindi'):
-    hindi_model=pickle.load(open('hindi_model.pkl','rb'))
-    hindi_vectorizer=pickle.load(open('hindi_vectorizer.pkl','rb'))
-    st.write('Please write your text below')
-    input_hindi=st.text_input('')
-    if(input!=''):
-        text_hin=hindi_vectorizer.transform([input_hindi])
-        prediction_hin=hindi_model.predict(text_hin)
-        st.write('The Above language is '+prediction_hin)
+# if(lang=='Hindi'):
+#     hindi_model=pickle.load(open('hindi_model.pkl','rb'))
+#     hindi_vectorizer=pickle.load(open('hindi_vectorizer.pkl','rb'))
+#     st.write('Please write your text below')
+#     input_hindi=st.text_input('')
+#     if(input!=''):
+#         text_hin=hindi_vectorizer.transform([input_hindi])
+#         prediction_hin=hindi_model.predict(text_hin)
+#         st.write('The Above language is '+prediction_hin)
 
-if(lang=='Details'):
-    expander_bar = st.expander("About")
-    expander_bar.markdown("""
-    * **Python libraries:** pandas, Numpy, streamlit, numpy, support Vector Machines, Pickle.
-    * **Data source:** Various Online Data Repositories.
-    """)
+# if(lang=='Details'):
+#     expander_bar = st.expander("About")
+#     expander_bar.markdown("""
+#     * **Python libraries:** pandas, Numpy, streamlit, numpy, support Vector Machines, Pickle.
+#     * **Data source:** Various Online Data Repositories.
+#     """)
 
-    expander_bar2=st.expander("Thought Process")
-    expander_bar2.markdown("""
-    The Basic Thought behind this project was to develop something which is very easy to use 
-    and easy to develop as well, cause as students we have some financial as well as time constraints 
-    if we are taking up any project. So we used one of the best classification algorithm SVM for the job
-    and the results were highly satisfactory. After successful development of the algorithm came the GUI so we
-    selected streamlit which is currently the favourite GUI tool for the job. Once everything was done we deployed 
-    the app using Streamlit Cloud feature.
-    """)
+#     expander_bar2=st.expander("Thought Process")
+#     expander_bar2.markdown("""
+#     The Basic Thought behind this project was to develop something which is very easy to use 
+#     and easy to develop as well, cause as students we have some financial as well as time constraints 
+#     if we are taking up any project. So we used one of the best classification algorithm SVM for the job
+#     and the results were highly satisfactory. After successful development of the algorithm came the GUI so we
+#     selected streamlit which is currently the favourite GUI tool for the job. Once everything was done we deployed 
+#     the app using Streamlit Cloud feature.
+#     """)
 
-    expander_bar1=st.expander("Team Members")
-    expander_bar1.markdown("""
-    * Mayank Sinha
-    * Amit Prakash
-    * Vibhav Brighuvanshi
-    * Shivam Pandey
-    """)
+#     expander_bar1=st.expander("Team Members")
+#     expander_bar1.markdown("""
+#     * Mayank Sinha
+#     * Amit Prakash
+#     * Vibhav Brighuvanshi
+#     * Shivam Pandey
+#     """)
