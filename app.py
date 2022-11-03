@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import regex
 import time
+import pandas as pd
 
 def custom_analyzer(text):
     words = regex.findall(r'\w{2,}', text) # extract words of at least 2 letters
@@ -81,8 +82,15 @@ if(lang=='English'):
             st.write('KNN predicts: No Undesirable Text Found')
             st.write('Time for prediction is:' + str(KNN_end_time-KNN_start_time))
         
-        chart_data=pd.DataFrame([svm_end_time-svm_start_time,LR_end_time-LR_start_time,rf_end_time-rf_start_time,tree_end_time-tree_start_time,KNN_end_time-KNN_start_time],
-                                columns=['SVM','LR','Random Forest','Decision Tree','KNN'])
+        svm_time=svm_end_time-svm_start_time
+        LR_time=LR_end_time-LR_start_time
+        rf_time=rf_end_time-rf_start_time
+        tree_time=tree_end_time-tree_start_time
+        KNN_time=KNN_end_time-KNN_start_time
+
+        data={'SVM':svm_time ,'LR':LR_time,'Random Forest':rf_time,'Decision Tree':tree_time,'KNN':KNN_time}
+        chart_data=pd.DataFrame.from_dict(data, orient='index', columns=['A'])
+        st.write(chart_data)
         st.bar_chart(chart_data)
 
 if(lang=='Hindi'):
