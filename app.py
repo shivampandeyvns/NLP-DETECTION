@@ -2,7 +2,6 @@ import streamlit as st
 import pickle
 import regex
 import time
-import matplotlib.pyplot as plt
 
 def custom_analyzer(text):
     words = regex.findall(r'\w{2,}', text) # extract words of at least 2 letters
