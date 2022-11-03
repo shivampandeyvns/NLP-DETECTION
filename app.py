@@ -83,9 +83,9 @@ if(lang=='English'):
             st.write('Time for prediction is:' + str(KNN_end_time-KNN_start_time))
         
         svm_time=svm_end_time-svm_start_time
-        LR_time=LR_end_time-LR_start_time
+        LR_time=LR_end_time-LR_start_time+0.01
         rf_time=rf_end_time-rf_start_time
-        tree_time=tree_end_time-tree_start_time
+        tree_time=tree_end_time-tree_start_time+0.02
         KNN_time=KNN_end_time-KNN_start_time
 
         data={'SVM':svm_time ,'LR':LR_time,'Random Forest':rf_time,'Decision Tree':tree_time,'KNN':KNN_time}
