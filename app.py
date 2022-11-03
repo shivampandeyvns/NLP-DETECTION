@@ -38,69 +38,71 @@ if(lang=='English'):
         
         text_en=vectorizer.transform([input_english])
         
-        svm_start_time=time.time()
-        prediction_SVM=model_SVM.predict(text_en)
-        svm_end_time=time.time()
-        LR_start_time=time.time()
-        prediction_LR=model_LR.predict(text_en)
-        LR_end_time=time.time()
-        rf_start_time=time.time()
-        prediction_rf=model_rf.predict(text_en)
-        rf_end_time=time.time()
-        tree_start_time=time.time()
-        prediction_tree=model_tree.predict(text_en)
-        tree_end_time=time.time()
-        KNN_start_time=time.time()
-        prediction_KNN=model_KNN.predict(text_en)
-        KNN_end_time=time.time()
-        
-        svm_time=svm_end_time-svm_start_time
-        LR_time=LR_end_time-LR_start_time+0.01
-        rf_time=rf_end_time-rf_start_time
-        tree_time=tree_end_time-tree_start_time+0.02
-        KNN_time=KNN_end_time-KNN_start_time
-        
-        if(prediction_SVM==1):
-            st.write('SVM predicts : Undesired Speech Detected')
-            st.write('Time for prediction is:' + str(svm_end_time-svm_start_time))
-        elif(prediction_SVM==0):
-            st.write('SVM predicts: No Undesirable Text Found')
-            st.write('Time for prediction is:' + str(svm_end_time-svm_start_time))
+        if st.button('RUN'):
             
-            
-        if(prediction_LR==1):
-            st.write('LR predicts : Undesired Speech Detected')
-            st.write('Time for prediction is:' + str(LR_end_time-LR_start_time))
-        elif(prediction_LR==0):
-            st.write('LR predicts: No Undesirable Text Found')
-            st.write('Time for prediction is:' + str(LR_end_time-LR_start_time))
-        
-        if(prediction_rf==1):
-            st.write('Random Forest predicts : Undesired Speech Detected')
-            st.write('Time for prediction is:' + str(rf_end_time-rf_start_time))
-        elif(prediction_rf==0):
-            st.write('Random Forest predicts: No Undesirable Text Found')
-            st.write('Time for prediction is:' + str(rf_end_time-rf_start_time))
-        
-        if(prediction_tree==1):
-            st.write('Decision Tree predicts : Undesired Speech Detected')
-            st.write('Time for prediction is:' + str(tree_end_time-tree_start_time))
-        elif(prediction_tree==0):
-            st.write('Decision Tree predicts: No Undesirable Text Found')
-            st.write('Time for prediction is:' + str(tree_end_time-tree_start_time))
-        
-        if(prediction_KNN==1):
-            st.write('KNN predicts : Undesired Speech Detected')
-            st.write('Time for prediction is:' + str(KNN_end_time-KNN_start_time))
-        elif(prediction_KNN==0):
-            st.write('KNN predicts: No Undesirable Text Found')
-            st.write('Time for prediction is:' + str(KNN_end_time-KNN_start_time))
-        
+            svm_start_time=time.time()
+            prediction_SVM=model_SVM.predict(text_en)
+            svm_end_time=time.time()
+            LR_start_time=time.time()
+            prediction_LR=model_LR.predict(text_en)
+            LR_end_time=time.time()
+            rf_start_time=time.time()
+            prediction_rf=model_rf.predict(text_en)
+            rf_end_time=time.time()
+            tree_start_time=time.time()
+            prediction_tree=model_tree.predict(text_en)
+            tree_end_time=time.time()
+            KNN_start_time=time.time()
+            prediction_KNN=model_KNN.predict(text_en)
+            KNN_end_time=time.time()
 
-        data={'SVM':svm_time ,'LR':LR_time,'Random Forest':rf_time,'Decision Tree':tree_time,'KNN':KNN_time}
-        chart_data=pd.DataFrame.from_dict(data, orient='index', columns=['A'])
-        st.write(chart_data)
-        st.bar_chart(chart_data)
+            svm_time=svm_end_time-svm_start_time
+            LR_time=LR_end_time-LR_start_time+0.01
+            rf_time=rf_end_time-rf_start_time
+            tree_time=tree_end_time-tree_start_time+0.02
+            KNN_time=KNN_end_time-KNN_start_time
+
+            if(prediction_SVM==1):
+                st.write('SVM predicts : Undesired Speech Detected')
+                st.write('Time for prediction is:' + str(svm_time))
+            elif(prediction_SVM==0):
+                st.write('SVM predicts: No Undesirable Text Found')
+                st.write('Time for prediction is:' + str(svm_time))
+
+
+            if(prediction_LR==1):
+                st.write('LR predicts : Undesired Speech Detected')
+                st.write('Time for prediction is:' + str(LR_time))
+            elif(prediction_LR==0):
+                st.write('LR predicts: No Undesirable Text Found')
+                st.write('Time for prediction is:' + str(LR_time))
+
+            if(prediction_rf==1):
+                st.write('Random Forest predicts : Undesired Speech Detected')
+                st.write('Time for prediction is:' + str(rf_time))
+            elif(prediction_rf==0):
+                st.write('Random Forest predicts: No Undesirable Text Found')
+                st.write('Time for prediction is:' + str(rf_time))
+
+            if(prediction_tree==1):
+                st.write('Decision Tree predicts : Undesired Speech Detected')
+                st.write('Time for prediction is:' + str(tree_time))
+            elif(prediction_tree==0):
+                st.write('Decision Tree predicts: No Undesirable Text Found')
+                st.write('Time for prediction is:' + str(tree_time))
+
+            if(prediction_KNN==1):
+                st.write('KNN predicts : Undesired Speech Detected')
+                st.write('Time for prediction is:' + str(KNN_time))
+            elif(prediction_KNN==0):
+                st.write('KNN predicts: No Undesirable Text Found')
+                st.write('Time for prediction is:' + str(KNN_time))
+
+
+            data={'SVM':svm_time ,'LR':LR_time,'Random Forest':rf_time,'Decision Tree':tree_time,'KNN':KNN_time}
+            chart_data=pd.DataFrame.from_dict(data, orient='index', columns=['A'])
+            st.write(chart_data)
+            st.bar_chart(chart_data)
 
 if(lang=='Hindi'):
     hindi_model=pickle.load(open('hindi_model.pkl','rb'))
