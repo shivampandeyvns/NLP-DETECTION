@@ -17,17 +17,47 @@ if(lang=='Home'):
     st.image('logo.jpeg')
 
 if(lang=='English'):
-    model = pickle.load(open('final_model.pkl', 'rb'))
+    model_SVM = pickle.load(open('SVM_model.pkl', 'rb'))
+    model_tree = pickle.load(open('tree_model.pkl','rb'))
+    model_LR = pickle.load(open('LR_model.pkl','rb'))
+    model_rf = pickle.load(open('rf_model.pkl','rb'))
+    model_KNN = pickle.load(open('KNN_model.pkl','rb'))
+    
     vectorizer=pickle.load(open('tfidf.pkl','rb'))
     st.write('Please write your text below')
     input_english=st.text_input('')
     if(input!=''):
         text_en=vectorizer.transform([input_english])
-        prediction_eng=model.predict(text_en)
-        if(prediction_eng==1):
-            st.write('Undesired Speech Detected')
-        elif(prediction_eng==0):
-            st.write('No Undesirable Text Found')
+        prediction_SVM=model_SVM.predict(text_en)
+        prediction_LR=model_LR.predict(text_en)
+        prediction_rf=model_rf.predict(text_en)
+        prediction_tree=model_tree.predict(text_en)
+        prediction_KNN=model_KNN.predict(text_en)
+        
+        if(prediction_SVM==1):
+            st.write('SVM predicts : Undesired Speech Detected')
+        elif(prediction_SVM==0):
+            st.write('SVM predicts: No Undesirable Text Found')
+            
+        if(prediction_LR==1):
+            st.write('LR predicts : Undesired Speech Detected')
+        elif(prediction_LR==0):
+            st.write('LR predicts: No Undesirable Text Found')
+        
+        if(prediction_rf==1):
+            st.write('Random Forest predicts : Undesired Speech Detected')
+        elif(prediction_rf==0):
+            st.write('Random Forest predicts: No Undesirable Text Found')
+        
+        if(prediction_tree==1):
+            st.write('Decision Tree predicts : Undesired Speech Detected')
+        elif(prediction_tree==0):
+            st.write('Decision Tree predicts: No Undesirable Text Found')
+        
+        if(prediction_KNN==1):
+            st.write('KNN predicts : Undesired Speech Detected')
+        elif(prediction_KNN==0):
+            st.write('KNN predicts: No Undesirable Text Found')
 
 
 if(lang=='Hindi'):
