@@ -93,7 +93,7 @@ if(lang=='English'):
             data={'SVM':svm_time ,'LR':LR_time,'Random Forest':rf_time,'Decision Tree':tree_time,'KNN':KNN_time}
             chart_data=pd.DataFrame.from_dict(data, orient='index', columns=['A'])
             st.write(chart_data)
-            st.bar_chart(chart_data).mark_line().encode(x='Algorithms',y='Prediction time in ms')
+            st.bar_chart(chart_data).encode(x='Algorithms',y='Prediction time in ms')
 
 # if(lang=='Hindi'):
 #     hindi_model=pickle.load(open('hindi_model.pkl','rb'))
